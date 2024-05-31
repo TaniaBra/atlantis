@@ -1,0 +1,5 @@
+.layout{
+    padding: 24px;
+    min-height: calc(100vh - 65px); /* vh = viewport height, altezza dello schermo */
+    background: #fff;
+}

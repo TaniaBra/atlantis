@@ -1,0 +1,66 @@
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 300px);
+  row-gap: 40px !important;
+  gap: 63px;
+  /*  distanza tra le card a livello orizzontale */
+}
+
+.card {
+  width: 300px;
+  height: 200px;
+  background-size: cover;
+  display: flex;
+  position: relative;
+  box-shadow: 0 3px 15px #3333
+}
+
+.card .nome {
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  transition: 0.3s;
+  z-index: 1000;
+}
+
+.card:hover .nome {
+  opacity: 1;
+
+}
+
+.card img {
+  max-width: 300px;
+  max-height: 200px;
+  transition: 0.2s;
+  min-width: 300px;
+  min-height: 200px;
+}
+
+.card img:hover {
+  filter: blur(3px);
+  cursor: pointer;
+}
+
+.esplora-button {
+  text-align: center;
+  margin: 0 auto;
+  background-color: lightgrey;
+}
+
+mat-card-content {
+  padding: 16px !important;
+}
+
+/* 
+una funzione che al click(router link) dell'immagine mi porti nella route dei prodotti
+qui dovrò mostrare almenoi il nome dei prodotti ngFor
+annessa chiamata ai prodotti by id catgeoria
+
+creazione prodotti component(copia stili da categorie component)
+
+
+
+*/

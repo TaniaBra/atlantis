@@ -1,0 +1,44 @@
+<mat-toolbar>
+
+    <button mat-icon-button class="menu" [matMenuTriggerFor]="menu" matTooltip="Menu">
+        <mat-icon fontIcon="menu"></mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item>Account</button>
+        <button mat-menu-item routerLink="/categorie">Categorie</button>
+        <button mat-menu-item>Sconti e Promozioni</button>
+        <button mat-menu-item>Storico Ordini</button>
+        <button mat-menu-item>Impostazioni</button>
+    </mat-menu>
+
+    <button mat-icon-button class="home" matTooltip="Home" routerLink="/home">
+        <mat-icon fontIcon="home"></mat-icon>
+    </button>
+    <div class="row g-0" style="width: 100%; height: 100%; display: flex;">
+        <div class="col">
+            <div class="row g-0" style="height:60%;">
+                <p style="font-size: 39px; align-items: end; " class="titolo">Atlantis</p>
+            </div>
+            <div class="row" style="height: 40%;">
+                <p style="font-size: 10px; align-items: end;">Dove ogni dubbio è sommerso!</p>
+            </div>
+        </div>
+        <div class="col">
+            <img class="logo" src="./assets/images/logo.png">
+        </div>
+    </div>
+
+    <div *ngIf="isLoggedIn">
+        <button  mat-icon-button class="logout" matTooltip="Logout">
+            <mat-icon fontIcon="logout"></mat-icon>
+        </button>
+    </div>
+    <div *ngIf="!isLoggedIn">
+        <button mat-icon-button class="login" matTooltip="Login" routerLink="/login">
+            <mat-icon fontIcon="login"></mat-icon>
+        </button>
+    </div>
+    <button mat-icon-button class="carrello" matTooltip="Carrello" routerLink="/carrello">
+        <mat-icon fontIcon="shopping_cart"></mat-icon>
+    </button>
+</mat-toolbar>

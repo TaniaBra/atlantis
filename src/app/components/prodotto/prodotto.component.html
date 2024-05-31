@@ -1,0 +1,14 @@
+<div class="card" *ngIf="prodotto.id > 0">
+    <img mat-card-image [src]="prodotto.urlImmagine" />
+    <h2>{{prodotto.nome}}</h2>
+
+    <p> {{prodotto.descrizioneLunga}}</p>
+    <p class="dispPrezzo">
+        Disponibilità: {{prodotto.disponibilita}} pezzi <br>
+        Prezzo: {{prodotto.prezzo}} euro</p>
+
+    <div class="card-button">
+        <button>Aggiungi al carrello</button>
+        <button>Acquista ora</button>
+    </div>
+</div>

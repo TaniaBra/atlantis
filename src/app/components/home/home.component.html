@@ -1,0 +1,11 @@
+<p class="messaggio" *ngIf="loggedUser">
+    Benvenuto!
+    <br>
+    Nome utente: {{ loggedUser.username }}
+    <br>
+    Email: {{ loggedUser.email }}
+</p>
+<p class="messaggio" *ngIf="!loggedUser">
+Accedi!
+</p>
+

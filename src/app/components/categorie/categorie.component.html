@@ -1,0 +1,9 @@
+<div class="cards-container">
+
+    <div *ngFor="let c of categorie" class="card" >
+      
+            <h3 class="nome">{{c.nome}}</h3> 
+            <img mat-card-image [src]="c.urlImmagine" [routerLink]="['/categorie', c.id, 'prodotti']" />
+ 
+    </div>
+</div>
