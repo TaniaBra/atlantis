@@ -1,2 +1,16 @@
+<div class="title">Carrello</div>
 
+
+
+
+
+
+<div id="prodotti">
+    <div *ngFor="let p of prodotti; let i = index" >
+    <div *ngIf="i === 0 || prodotti[i - 1].id !== p.id">
+    <p>Nome: {{p.nome}}</p>
+    <p>Quantità: {{quantitaProdotto}}</p></div>
+    
+    </div>
+</div>
 

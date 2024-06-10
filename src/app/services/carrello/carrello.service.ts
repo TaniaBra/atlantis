@@ -10,6 +10,8 @@ export class CarrelloService {
   //mi creo il behaviorsubject(perchè può essere visibile in tutte le parti del programma) di tipo Prodotto[] e lo inizializzo come vuoto
   prodottiNelCarrello = new BehaviorSubject<Prodotto[]>([]);
 
+  quantitaProdottoService : number = 0;
+
 
 
   constructor() { }
@@ -22,6 +24,8 @@ export class CarrelloService {
     let totaleProdotti = this.prodottiNelCarrello.getValue();
     totaleProdotti.push(prodotto);
     this.prodottiNelCarrello.next(totaleProdotti);
+    //this.quantitaProdottoService = this.quantitaProdottoService +1 ;
+       
  
   }
 
