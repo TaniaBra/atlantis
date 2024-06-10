@@ -21,10 +21,10 @@
 
         <div class="card-buttons-container row g-0">
             <div class="col card-buttons">
-                <button mat-flat-button class="card-button-cart">
+                <button matTooltip="Carrello" mat-flat-button class="card-button-cart" >
                     <mat-icon>add_shopping_cart</mat-icon>
                 </button>
-                <button mat-flat-button class="card-button-detail" [routerLink]="['/categorie', p.idCategoria, 'prodotti', p.id ]">
+                <button matTooltip="Dettaglio" mat-flat-button class="card-button-detail" [routerLink]="['/categorie', p.idCategoria, 'prodotti', p.id ]">
                     <mat-icon>arrow_forward</mat-icon>
                 </button>
             </div>

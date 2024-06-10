@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Prodotto } from 'src/app/model/prodotto';
+import { CarrelloService } from 'src/app/services/carrello/carrello.service';
 import { ProdottoService } from 'src/app/services/prodotto/prodotto.service';
 
 @Component({
@@ -11,8 +12,9 @@ import { ProdottoService } from 'src/app/services/prodotto/prodotto.service';
 export class ProdottoComponent {
 
   prodotto= new Prodotto(0, "", "", "", 0, 0, 0, "");
+ 
   
-  constructor(private prodottoService: ProdottoService, private route: ActivatedRoute) { }
+  constructor(private prodottoService: ProdottoService, private route: ActivatedRoute, private carrelloService: CarrelloService) { }
 
   ngOnInit() {
     let prodottoId: string | null = "";
@@ -26,6 +28,10 @@ export class ProdottoComponent {
         
       }
     });
+    
+  }
 
+  aggiungiAlCarrello(prodotto: Prodotto){
+    this.carrelloService.aggiungiAlCarrello(prodotto)
   }
 }

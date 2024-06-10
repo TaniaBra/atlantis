@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CarrelloService } from 'src/app/services/carrello/carrello.service';
 import { LoginService } from 'src/app/services/login/login.service';
 
 @Component({
@@ -8,14 +9,18 @@ import { LoginService } from 'src/app/services/login/login.service';
 })
 export class HeaderComponent {
 
-  constructor(private loginService: LoginService) { }
+  constructor(private loginService: LoginService, private carrelloService: CarrelloService) { }
 
   isLoggedIn = false;
   hidden = false;
+  numeroProdottiCarrello = 0; 
 
   ngOnInit() {
     this.loginService.loggedUser.subscribe((isLoggedIn) => {
       this.isLoggedIn = isLoggedIn;
+    });
+    this.carrelloService.prodottiNelCarrello.subscribe((prodottiCarrello) => {
+      this.numeroProdottiCarrello = prodottiCarrello.length;
     });
   }
 
