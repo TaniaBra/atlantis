@@ -23,10 +23,13 @@ export class CarrelloService {
   aggiungiAlCarrello(prodotto: Prodotto){
     let totaleProdotti = this.prodottiNelCarrello.getValue();
     totaleProdotti.push(prodotto);
-    this.prodottiNelCarrello.next(totaleProdotti);
+    this.aggiornaCarrello(totaleProdotti);
     //this.quantitaProdottoService = this.quantitaProdottoService +1 ;
-       
- 
+  }
+
+  aggiornaCarrello(totaleProdotti: Prodotto[]) {
+    this.prodottiNelCarrello.next(totaleProdotti);
+    localStorage.setItem("carrello", JSON.stringify(totaleProdotti));
   }
 
 
