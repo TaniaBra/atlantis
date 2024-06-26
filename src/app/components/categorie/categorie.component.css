@@ -39,8 +39,11 @@
   min-height: 200px;
 }
 
-.card img:hover {
+.card:hover img {
   filter: blur(3px);
+  cursor: pointer;
+}
+.card .nome {
   cursor: pointer;
 }
 
