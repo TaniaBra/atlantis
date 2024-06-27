@@ -1,15 +1,48 @@
-<div class="title">Carrello</div>
-
-<div id="prodotti">
-    <div *ngFor="let p of prodotti.keys()">
-        <p>Nome: {{p.nome}}</p>
-        <p>Quantità: {{prodotti.get(p)}}</p>
-        <p>Costo: {{p.prezzo}}</p>
-
+<h3 class="title">Carrello</h3>
+<div class="global-container">
+    <div class="cards-container">
+        <div *ngFor="let p of prodotti">
+            <div class="card-prodotto">
+                <img [src]="p.urlImmagine">
+                <div class="info-container">
+                    <div>
+                        <strong>Nome: </strong>{{p.nome}}
+                    </div>
+                    <div>
+                        <strong>Costo: </strong>{{p.prezzo}}
+                    </div>
+                    <div>
+                        <strong>Descrizione: </strong>{{p.descrizioneBreve}}
+                    </div>
+                    <div class="bottom-info-container">
+                        <div class="available-info-container" *ngIf="p.disponibilita <= 5"
+                            [ngStyle]="{ 'width': p.disponibilita <= 5 ? '50%' : '100%' }">
+                            <span><strong>Disponibilità: </strong>{{p.disponibilita}}</span>
+                        </div>
+                        <div class="quantity-info-container"
+                            [ngStyle]="{ 'width': p.disponibilita <= 5 ? '50%' : '100%' }">
+                            <span><strong>Quantità: </strong>{{p.quantita}}</span>
+                            <div class="quantity-action-buttons">
+                                <button (click)="removeProdotto(p.id)">
+                                    <mat-icon *ngIf="p.quantita === 1; else removeIcon" fontIcon="delete"></mat-icon>
+                                </button>
+                                <button (click)="addProdotto(p.id)" style="margin-left: 2px">
+                                    <ng-template #removeIcon>
+                                        <mat-icon fontIcon="remove"></mat-icon>
+                                    </ng-template>
+                                    <mat-icon fontIcon="add"></mat-icon>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="cards-info-container">
+        <div id="costo-totale">
+            <p>Costo totale : {{prezzoTotale}}</p>
+        </div>
     </div>
 </div>
 <hr>
-
-<div id="costo-totale">
-    <p>Costo totale : {{prezzoTotale}}</p>
-</div>

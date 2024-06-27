@@ -1,3 +1,7 @@
+<button class="back-button" matTooltip="Indietro" [routerLink]="['/categorie', prodotto.idCategoria, 'prodotti']">
+    <mat-icon>keyboard_double_arrow_left</mat-icon>
+    <span>Indietro</span>
+</button>
 <div class="card" *ngIf="prodotto.id > 0">
     <div class="img-container">
         <img mat-card-image [src]="prodotto.urlImmagine" />

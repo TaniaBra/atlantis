@@ -1,3 +1,13 @@
+.back-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.back-button span{
+    margin: 0px 5px 0px 2px;
+}
+
 .card {
     max-width: 500px;
     max-height: 700px;
@@ -5,8 +15,6 @@
     position: absolute;
     margin-left: 30%;
     margin-top: 10px;
-
-
 }
 
 .img-container {

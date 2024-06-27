@@ -4,10 +4,7 @@
         <mat-icon fontIcon="menu"></mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-        <button mat-menu-item>Account</button>
         <button mat-menu-item routerLink="/categorie">Categorie</button>
-        <button mat-menu-item>Sconti e Promozioni</button>
-        <button mat-menu-item>Storico Ordini</button>
         <button mat-menu-item>Impostazioni</button>
     </mat-menu>
 
@@ -28,12 +25,19 @@
         </div>
     </div>
 
-    <div *ngIf="isLoggedIn">
-        <button  mat-icon-button class="logout" matTooltip="Logout">
-            <mat-icon fontIcon="logout"></mat-icon>
+    <div *ngIf="loggedUser">
+        <button mat-icon-button class="profile" [matMenuTriggerFor]="menu" matTooltip="Menu">
+            <img [src]="loggedUser.urlAvatar" />
         </button>
+        <mat-menu #menu="matMenu" class="profile-panel">
+            <button mat-menu-item>Account</button>
+            <button mat-menu-item>Ordini</button>
+            <button mat-menu-item>Sconti e Promozioni</button>
+            <hr>
+            <button mat-menu-item (click)="logout()">Logout</button>
+        </mat-menu>
     </div>
-    <div *ngIf="!isLoggedIn">
+    <div *ngIf="!loggedUser">
         <button mat-icon-button class="login" matTooltip="Login" routerLink="/login">
             <mat-icon fontIcon="login"></mat-icon>
         </button>

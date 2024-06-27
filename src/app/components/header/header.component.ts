@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { Utente } from 'src/app/model/utente';
 import { CarrelloService } from 'src/app/services/carrello/carrello.service';
 import { LoginService } from 'src/app/services/login/login.service';
 
@@ -9,15 +11,15 @@ import { LoginService } from 'src/app/services/login/login.service';
 })
 export class HeaderComponent {
 
-  constructor(private loginService: LoginService, private carrelloService: CarrelloService) { }
+  constructor(private loginService: LoginService, private carrelloService: CarrelloService, private router: Router) { }
 
-  isLoggedIn = false;
+  loggedUser?: Utente;
   hidden = false;
-  numeroProdottiCarrello = 0; 
+  numeroProdottiCarrello = 0;
 
   ngOnInit() {
-    this.loginService.loggedUser.subscribe((isLoggedIn) => {
-      this.isLoggedIn = isLoggedIn;
+    this.loginService.loggedUser.subscribe((loggedUser) => {
+      this.loggedUser = loggedUser;
     });
     this.carrelloService.prodottiNelCarrello.subscribe((prodottiCarrello) => {
       this.numeroProdottiCarrello = prodottiCarrello.length;
@@ -25,7 +27,10 @@ export class HeaderComponent {
   }
 
   logout() {
-    this.loginService.loggedUser.next(false);
+    this.loginService.loggedUser.next(null);
+    if (this.router.url.toLowerCase().includes("account")) {
+      this.router.navigate(["/home"]);
+    }
   }
 
   toggleBadgeVisibility() {

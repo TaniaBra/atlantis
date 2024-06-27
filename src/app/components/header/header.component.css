@@ -1,4 +1,4 @@
-mat-toolbar{
+mat-toolbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -10,7 +10,7 @@ mat-toolbar{
     height: 65px;
 }
 
-mat-toolbar button{
+mat-toolbar button {
     width: 33px;
     height: 33px;
     display: flex;
@@ -21,7 +21,7 @@ mat-toolbar button{
     border: solid 2px #5465ff;
 }
 
-mat-toolbar button mat-icon{
+mat-toolbar button mat-icon {
     display: flex;
     height: 20px;
     width: 20px;
@@ -30,62 +30,71 @@ mat-toolbar button mat-icon{
     align-items: center;
 }
 
-::ng-deep .mat-mdc-icon-button{
+::ng-deep .mat-mdc-icon-button {
     padding: 0px !important;
 }
 
-.row{
+.row {
     flex-wrap: nowrap;
 }
-.row .col{
+
+.row .col {
     align-items: center;
 }
-    
-.logo{
+
+.logo {
     width: 50px;
     justify-content: left;
     display: flex;
     margin-left: 3px;
 }
 
-p{
+p {
     display: flex;
     justify-content: right;
     font-family: Georgia;
-    font-style: oblique ;
-    margin: 0 !important; 
+    font-style: oblique;
+    margin: 0 !important;
 }
 
-.menu{
+.menu {
+    border-radius: 50px;
+    margin-left: 20px;
+}
+
+.home {
 
     border-radius: 50%;
     margin-left: 20px;
 }
 
-.home{
-
-    border-radius: 50%;
-    margin-left: 20px;
-}
-
-.carrello{
+.carrello {
     margin-right: 20px;
     border-radius: 50px;
-    
+
 }
 
-.logout{
+.profile {
     margin-right: 20px;
     border-radius: 50px;
-    
 }
-.login{
+
+.profile img{
+    min-width: 25px;
+    min-height: 25px;
+}
+
+.login {
     margin-right: 20px;
     border-radius: 50px;
-    
+
 }
-.messaggio{
+
+.messaggio {
     float: left;
     font-family: Georgia;
 }
 
+::ng-deep .profile-panel {
+    width: 150px !important;
+}

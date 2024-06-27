@@ -7,4 +7,5 @@ export interface Utente {
     username: String
     password: String
     disabilitato: boolean
+    urlAvatar: String
 }
