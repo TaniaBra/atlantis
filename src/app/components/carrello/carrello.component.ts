@@ -11,14 +11,12 @@ import { CarrelloService } from 'src/app/services/carrello/carrello.service';
 })
 export class CarrelloComponent {
 
+
   prodottiCarrello: Prodotto[] = [];
   prodotti: any[] = [];
-
   prezzoTotale: number = 0;
-
-
-
-
+  dataCorrente: Date = new Date();
+  
 
   constructor(private carrelloService: CarrelloService) { }
 
@@ -47,7 +45,7 @@ export class CarrelloComponent {
     prodottiCarrello.forEach(p => {
       const prodottoTrovato = prodottiRielaborati.find(el => el.id === p.id);
       if (!prodottoTrovato) {
-        prodottiRielaborati.push({ ...p, quantita: 1 })
+        prodottiRielaborati.push({ ...p, quantita: 1, selezionato: true })
       } else {
         prodottoTrovato.quantita += 1;
       }
@@ -78,6 +76,22 @@ export class CarrelloComponent {
       this.carrelloService.aggiornaCarrello(this.prodottiCarrello);
     }
   }
+
+  getNumeroProdottiSelezionati() {
+    const tmp = this.prodottiCarrello.filter(el => {
+      const prodottoTrovato = this.prodotti.find(p => p.id === el.id);
+      if(prodottoTrovato){
+        return prodottoTrovato.selezionato;
+      }else{
+        return false;
+      }
+    });
+    return tmp.length;
+  }
+
+  selectProdotto() {
+  
+    }
 
 
 
