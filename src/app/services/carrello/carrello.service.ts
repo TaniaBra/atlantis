@@ -48,6 +48,17 @@ export class CarrelloService {
     this.aggiornaCarrello(prodotti);
   }
 
+  svuotaCarrello(){
+    let prodotti: Prodotto[] = [];
+    this.aggiornaCarrello(prodotti);
+  }
+
+  svuotaCarrelloParziale(){
+    let prodotti = this.prodottiNelCarrello.getValue();
+    prodotti = prodotti.filter(prodotto => !prodotto.selezionato);
+    this.aggiornaCarrello(prodotti);
+  }
+
   toggleSelectProdotto(id: number) {
     let prodotti = this.prodottiNelCarrello.getValue();
     const p = prodotti.find(el => el.id === id);

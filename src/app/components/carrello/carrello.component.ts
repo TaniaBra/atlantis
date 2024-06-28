@@ -38,6 +38,10 @@ export class CarrelloComponent {
     this.carrelloService.rimuoviDalCarrello(prodotto);
   }
 
+  svuotaCarrello(){
+    this.carrelloService.svuotaCarrello();
+  }
+
   addProdotto(prodotto: Prodotto) {
     this.carrelloService.aggiungiAlCarrello(prodotto);
   }
@@ -52,6 +56,10 @@ export class CarrelloComponent {
 
   toggleSelectProdotto(id: number) {
     this.carrelloService.toggleSelectProdotto(id);
+  }
+
+  svuotaCarrelloParziale(){
+    this.carrelloService.svuotaCarrelloParziale();
   }
 
 }

@@ -1,36 +1,3 @@
 <div class="cards-container">
-
-    <div class="card" *ngFor="let p of prodotti">
-        <div class="img-container">
-            <img mat-card-image [src]="p.urlImmagine" [routerLink]="['/categorie', p.idCategoria, 'prodotti', p.id ]" />
-        </div>
-        <div class="content">
-            <div class="descrizione">
-                <p> {{p.descrizioneBreve}}</p>
-            </div>
-            <div class="info-container">
-                <div class="disponibilita">
-                    Disponibilità: <span class="info">{{p.disponibilita}} pezzi</span>
-                </div>
-                <div class="prezzo">
-                    Prezzo: <strong class="info">€{{p.prezzo}}</strong>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="card-buttons-container row g-0">
-            <div class="col card-buttons">
-                <button matTooltip="Carrello" mat-flat-button class="card-button-cart" (click)="addProdotto(p)">
-                    <mat-icon>add_shopping_cart</mat-icon>
-                </button>
-                <button matTooltip="Dettaglio" mat-flat-button class="card-button-detail" [routerLink]="['/categorie', p.idCategoria, 'prodotti', p.id ]">
-                    <mat-icon>arrow_forward</mat-icon>
-                </button>
-            </div>
-
-        </div>
-    </div>
-
-
+    <app-card-prodotto *ngFor="let p of prodotti" [prodotto]="p"></app-card-prodotto>
 </div>

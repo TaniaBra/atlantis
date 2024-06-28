@@ -51,5 +51,9 @@
         <span style="color: red;"><strong>Costo totale provvisorio: </strong>{{getCostoParziale() |
             currency:'EUR':'symbol'}}</span>
         <span style="color: red;"><strong>Costo totale: </strong>{{getCostoTotale() | currency:'EUR':'symbol'}}</span>
+        <div class="cards-buttons-actions">
+            <button (click)="svuotaCarrello()">Svuota Carrello</button>
+            <button (click)="svuotaCarrelloParziale()">Procedi all'acquisto</button>
+        </div>
     </div>
 </div>

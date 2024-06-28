@@ -15,6 +15,7 @@ import { ProdottoComponent } from './components/prodotto/prodotto.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProdottiComponent } from './components/prodotti/prodotti.component';
+import { CardProdottoComponent } from './components/card-prodotto/card-prodotto.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ProdottiComponent } from './components/prodotti/prodotti.component';
     LoginComponent,
     RegistrazioneComponent,
     ProdottoComponent,
-    ProdottiComponent
+    ProdottiComponent,
+    CardProdottoComponent
 
   ],
   imports: [

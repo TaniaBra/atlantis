@@ -1,4 +1,4 @@
-<button class="back-button" matTooltip="Indietro" [routerLink]="['/categorie', prodotto.idCategoria, 'prodotti']">
+<button class="back-button" matTooltip="Indietro" (click)="goBack()">
     <mat-icon>keyboard_double_arrow_left</mat-icon>
     <span>Indietro</span>
 </button>
