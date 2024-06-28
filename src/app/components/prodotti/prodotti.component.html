@@ -21,7 +21,7 @@
 
         <div class="card-buttons-container row g-0">
             <div class="col card-buttons">
-                <button matTooltip="Carrello" mat-flat-button class="card-button-cart" (click)="aggiungiAlCarrello(p)">
+                <button matTooltip="Carrello" mat-flat-button class="card-button-cart" (click)="addProdotto(p)">
                     <mat-icon>add_shopping_cart</mat-icon>
                 </button>
                 <button matTooltip="Dettaglio" mat-flat-button class="card-button-detail" [routerLink]="['/categorie', p.idCategoria, 'prodotti', p.id ]">

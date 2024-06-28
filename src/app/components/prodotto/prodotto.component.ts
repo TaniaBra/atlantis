@@ -11,7 +11,7 @@ import { ProdottoService } from 'src/app/services/prodotto/prodotto.service';
 })
 export class ProdottoComponent {
 
-  prodotto= new Prodotto(0, "", "", "", 0, 0, 0, "");
+  prodotto= new Prodotto(0, "", "", "", 0, 0, 0, "", 0, false);
  
   
   constructor(private prodottoService: ProdottoService, private route: ActivatedRoute, private carrelloService: CarrelloService) { }
@@ -34,4 +34,6 @@ export class ProdottoComponent {
   aggiungiAlCarrello(prodotto: Prodotto){
     this.carrelloService.aggiungiAlCarrello(prodotto)
   }
+
+  
 }

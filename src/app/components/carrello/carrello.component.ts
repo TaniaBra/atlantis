@@ -12,98 +12,46 @@ import { CarrelloService } from 'src/app/services/carrello/carrello.service';
 export class CarrelloComponent {
 
 
-  prodottiCarrello: Prodotto[] = [];
-  prodotti: any[] = [];
-  prezzoTotale: number = 0;
+  prodotti: Prodotto[] = [];
   dataCorrente: Date = new Date();
-  
+
 
   constructor(private carrelloService: CarrelloService) { }
 
   ngOnInit() {
-    this.carrelloService.prodottiNelCarrello.subscribe((prodottiCarrello) => {
-      this.prodottiCarrello = prodottiCarrello;
-      this.prodotti = this.rielaboraCarrello(prodottiCarrello);
-      this.prezzoTotale = this.getCostoTotale(prodottiCarrello);
+    this.carrelloService.prodottiNelCarrello.subscribe((prodotti) => {
+      this.prodotti = prodotti;
     });
-    //this.quantitaProdotto = this.carrelloService.quantitaProdottoService;
-
-
   }
 
-  findProdottoById(map: Map<Prodotto, number>, id: number) {
-    for (let [prodotto, quantita] of map.entries()) {
-      if (prodotto.id === id) {
-        return quantita;
-      }
-    }
-    return undefined;
+  // costo totale prodotti
+  getCostoTotale() {
+    return this.carrelloService.getCostoTotale();
   }
 
-  rielaboraCarrello(prodottiCarrello: Prodotto[]) {
-    const prodottiRielaborati: any[] = [];
-    prodottiCarrello.forEach(p => {
-      const prodottoTrovato = prodottiRielaborati.find(el => el.id === p.id);
-      if (!prodottoTrovato) {
-        prodottiRielaborati.push({ ...p, quantita: 1, selezionato: true })
-      } else {
-        prodottoTrovato.quantita += 1;
-      }
-    });
-    return prodottiRielaborati;
+  // costo prodotti selezionati
+  getCostoParziale() {
+    return this.carrelloService.getCostoParziale();
   }
 
-  getCostoTotale(listaProdotti: Prodotto[]) {
-    let costoTotale: number = 0;
-    for (let l of listaProdotti) {
-      costoTotale += l.prezzo;
-    }
-    return (costoTotale * 100) / 100;
+  removeProdotto(prodotto: Prodotto) {
+    this.carrelloService.rimuoviDalCarrello(prodotto);
   }
 
-  removeProdotto(id: number) {
-    const index = this.prodottiCarrello.findIndex(el => el.id === id);
-    if (index > -1) {
-      this.prodottiCarrello.splice(index, 1);
-      this.carrelloService.aggiornaCarrello(this.prodottiCarrello);
-    }
-  }
-
-  addProdotto(id: number) {
-    const p = this.prodottiCarrello.find(el => el.id === id);
-    if (p) {
-      this.prodottiCarrello.push(p);
-      this.carrelloService.aggiornaCarrello(this.prodottiCarrello);
-    }
+  addProdotto(prodotto: Prodotto) {
+    this.carrelloService.aggiungiAlCarrello(prodotto);
   }
 
   getNumeroProdottiSelezionati() {
-    const tmp = this.prodottiCarrello.filter(el => {
-      const prodottoTrovato = this.prodotti.find(p => p.id === el.id);
-      if(prodottoTrovato){
-        return prodottoTrovato.selezionato;
-      }else{
-        return false;
-      }
-    });
-    return tmp.length;
+    return this.carrelloService.getNumeroProdottiSelezionati();
   }
 
-  selectProdotto() {
-  
-    }
+  getNumeroProdotti() {
+    return this.carrelloService.getNumeroProdotti();
+  }
 
-
-
-
-
-
-
-
-
-
-
-
-
+  toggleSelectProdotto(id: number) {
+    this.carrelloService.toggleSelectProdotto(id);
+  }
 
 }

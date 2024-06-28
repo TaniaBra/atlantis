@@ -25,10 +25,10 @@ export class ProdottiComponent {
         });
       }
     });
-
   }
   
-  aggiungiAlCarrello(prodotto: Prodotto){
-    this.carrelloService.aggiungiAlCarrello(prodotto)
+  addProdotto(prodotto: Prodotto) {
+    this.carrelloService.aggiungiAlCarrello(prodotto);
   }
+
 }

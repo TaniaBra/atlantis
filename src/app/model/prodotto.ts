@@ -1,16 +1,19 @@
 
 export class Prodotto {
     id: number
-    nome: String
-    descrizioneBreve: String
-    descrizioneLunga: String
+    nome: string
+    descrizioneBreve: string
+    descrizioneLunga: string
     disponibilita: number
     prezzo: number
     idCategoria: number
-    urlImmagine: String
+    urlImmagine: string
+    quantita: number
+    selezionato: boolean
 
-    constructor(id: number, nome: String, descrizioneBreve: String, descrizioneLunga: String,
-        disponibilita: number, prezzo: number, idCategoria: number, urlImmagine: String) {
+    constructor(id: number, nome: string, descrizioneBreve: string, descrizioneLunga: string,
+        disponibilita: number, prezzo: number, idCategoria: number, urlImmagine: string,
+        quantita: number, selezionato: boolean) {
         this.id = id;
         this.nome = nome;
         this.descrizioneBreve = descrizioneBreve;
@@ -19,5 +22,7 @@ export class Prodotto {
         this.prezzo = prezzo;
         this.idCategoria = idCategoria;
         this.urlImmagine = urlImmagine;
+        this.quantita = quantita;
+        this.selezionato = selezionato;
     }
 }

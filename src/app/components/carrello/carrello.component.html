@@ -4,9 +4,13 @@
         <div *ngFor="let p of prodotti" class="card-prodotto">
             <img [src]="p.urlImmagine">
             <div class="info-container">
+                <div class="top-info-container">
+                    <div class="selected-checkbox">
+                        <mat-checkbox [checked]="p.selezionato" (change)="toggleSelectProdotto(p.id)"></mat-checkbox>
+                    </div>
+                </div>
                 <div style="display: flex;">
                     <span><strong>Nome: </strong>{{p.nome}}</span>
-                    <mat-checkbox (click)="selectProdotto()" style="margin-left: auto;"></mat-checkbox>
                 </div>
                 <div>
                     <span><strong>Costo: </strong>{{p.prezzo | currency:'EUR':'symbol'}}</span>
@@ -22,10 +26,10 @@
                     <div class="quantity-info-container" [ngStyle]="{ 'width': p.disponibilita <= 5 ? '50%' : '100%' }">
                         <span><strong>Quantità: </strong>{{p.quantita}}</span>
                         <div class="quantity-action-buttons">
-                            <button (click)="removeProdotto(p.id)">
+                            <button (click)="removeProdotto(p)">
                                 <mat-icon *ngIf="p.quantita === 1; else removeIcon" fontIcon="delete"></mat-icon>
                             </button>
-                            <button (click)="addProdotto(p.id)" style="margin-left: 2px">
+                            <button (click)="addProdotto(p)" style="margin-left: 2px">
                                 <ng-template #removeIcon>
                                     <mat-icon fontIcon="remove"></mat-icon>
                                 </ng-template>
@@ -38,14 +42,14 @@
         </div>
     </div>
     <div class="cards-info-container">
-        <span><strong>Totale prodotti: {{prodottiCarrello.length}}</strong></span>
+        <span><strong>Totale prodotti: {{getNumeroProdotti()}}</strong></span>
         <span><strong>Totale prodotti selezionati: {{getNumeroProdottiSelezionati()}}</strong></span>
         <span><strong>Sconti applicati: </strong></span>
         <span><strong>Consegna prevista entro il: </strong>{{ dataCorrente | date:'dd/MM/yyyy' }}</span>
         <span><strong>Indirizzo di consegna: </strong>Via tal dei tali 32, (RM, 00132)</span>
         <span><strong>Dati di consegna: </strong>Marta Gialli</span>
-        <span style="color: red;"><strong>Costo totale provvisorio: </strong>{{prezzoTotale |
+        <span style="color: red;"><strong>Costo totale provvisorio: </strong>{{getCostoParziale() |
             currency:'EUR':'symbol'}}</span>
-        <span style="color: red;"><strong>Costo totale: </strong>{{prezzoTotale | currency:'EUR':'symbol'}}</span>
+        <span style="color: red;"><strong>Costo totale: </strong>{{getCostoTotale() | currency:'EUR':'symbol'}}</span>
     </div>
 </div>

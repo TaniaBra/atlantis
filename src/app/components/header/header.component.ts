@@ -15,14 +15,10 @@ export class HeaderComponent {
 
   loggedUser?: Utente;
   hidden = false;
-  numeroProdottiCarrello = 0;
 
   ngOnInit() {
     this.loginService.loggedUser.subscribe((loggedUser) => {
       this.loggedUser = loggedUser;
-    });
-    this.carrelloService.prodottiNelCarrello.subscribe((prodottiCarrello) => {
-      this.numeroProdottiCarrello = prodottiCarrello.length;
     });
   }
 
@@ -37,7 +33,8 @@ export class HeaderComponent {
     this.hidden = !this.hidden;
   }
 
-
-
+  getNumeroProdotti() {
+    return this.carrelloService.getNumeroProdotti();
+  }
 
 }

@@ -54,7 +54,21 @@
 .card-prodotto .info-container {
     position: relative;
     padding: 5px;
-    line-height: 2.5rem;
+}
+
+.card-prodotto .top-info-container {
+    position: absolute;
+    display: flex;
+    width: 100%;
+    top: 2px;
+    right: 2px;
+}
+
+.card-prodotto .selected-checkbox{
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    width: 100%;
 }
 
 .card-prodotto .bottom-info-container {
