@@ -7,20 +7,11 @@ import { Prodotto } from 'src/app/model/prodotto';
 })
 export class CarrelloService {
 
-
-  //mi creo il behaviorsubject(perchè può essere visibile in tutte le parti del programma) di tipo Prodotto[] e lo inizializzo come vuoto
   prodottiNelCarrello = new BehaviorSubject<Prodotto[]>([]);
-
   quantitaProdottoService: number = 0;
-
-
 
   constructor() { }
 
-  //metodo per aggiungere prodotti al carrello
-  //mi creo una variabile che mi dice il totale dei prodotti nel carrello con .getValue()
-  // con .push inserirsco il nuovo prodotto nel carrello
-  // con .next() mando la notifica a chi sottoscrive
   aggiungiAlCarrello(prodotto: Prodotto) {
     let prodotti = this.prodottiNelCarrello.getValue();
     const p = prodotti.find(el => el.id === prodotto.id);
@@ -53,7 +44,7 @@ export class CarrelloService {
     this.aggiornaCarrello(prodotti);
   }
 
-  svuotaCarrelloParziale(){
+  procediConAcquisto(){
     let prodotti = this.prodottiNelCarrello.getValue();
     prodotti = prodotti.filter(prodotto => !prodotto.selezionato);
     this.aggiornaCarrello(prodotti);

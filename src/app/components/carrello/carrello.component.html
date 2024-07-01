@@ -53,7 +53,8 @@
         <span style="color: red;"><strong>Costo totale: </strong>{{getCostoTotale() | currency:'EUR':'symbol'}}</span>
         <div class="cards-buttons-actions">
             <button (click)="svuotaCarrello()">Svuota Carrello</button>
-            <button (click)="svuotaCarrelloParziale()">Procedi all'acquisto</button>
+            <button *ngIf="loggedUser" (click)="procediConAcquisto()">Procedi all'acquisto</button>
+            <button *ngIf="!loggedUser" (click)="procediConAcquisto()">Accedi per procedere all'acquisto</button>
         </div>
     </div>
 </div>

@@ -24,9 +24,7 @@ export class HeaderComponent {
 
   logout() {
     this.loginService.loggedUser.next(null);
-    if (this.router.url.toLowerCase().includes("account")) {
-      this.router.navigate(["/home"]);
-    }
+      this.router.navigate(["/login"]);
   }
 
   toggleBadgeVisibility() {

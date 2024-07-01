@@ -19,6 +19,6 @@ export class LoginService {
 
   getUser(utente: any) {
     return this.http.post(CONSTANTS.BASE_PATH + "utenti/ricerca", utente, { headers: getHeaders() }); 
-  }
+  } 
 
 }

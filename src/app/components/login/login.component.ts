@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -17,7 +18,8 @@ export class LoginComponent {
   });
 
   //inietto il FormBuilder che mi serve per richiamare il FormGroup
-  constructor(private fb: FormBuilder, private loginService: LoginService, private router: Router) { }
+  constructor(private fb: FormBuilder, private loginService: LoginService, private router: Router,
+    private location: Location) { }
 
 
   //nel metodo di login con il .get prendo i parametri in input
@@ -27,7 +29,7 @@ export class LoginComponent {
     this.loginService.getUser({ username, password }).subscribe(res => {
       this.loginService.loggedUser.next(res);
       if (res) {
-        this.router.navigate(["/home"]);
+        this.location.back();
       }
     });
   }

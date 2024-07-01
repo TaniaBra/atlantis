@@ -1,6 +1,10 @@
 import { Component, } from '@angular/core';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Prodotto } from 'src/app/model/prodotto';
+import { Utente } from 'src/app/model/utente';
 import { CarrelloService } from 'src/app/services/carrello/carrello.service';
+import { LoginService } from 'src/app/services/login/login.service';
 
 
 
@@ -11,17 +15,22 @@ import { CarrelloService } from 'src/app/services/carrello/carrello.service';
 })
 export class CarrelloComponent {
 
-
+  loggedUser?: Utente;
   prodotti: Prodotto[] = [];
   dataCorrente: Date = new Date();
 
 
-  constructor(private carrelloService: CarrelloService) { }
+  constructor(private carrelloService: CarrelloService, private loginService: LoginService, private router: Router,
+     private toastr: ToastrService) { }
 
   ngOnInit() {
+    this.loginService.loggedUser.subscribe((loggedUser) => {
+      this.loggedUser = loggedUser;
+    });
     this.carrelloService.prodottiNelCarrello.subscribe((prodotti) => {
       this.prodotti = prodotti;
     });
+
   }
 
   // costo totale prodotti
@@ -58,8 +67,20 @@ export class CarrelloComponent {
     this.carrelloService.toggleSelectProdotto(id);
   }
 
-  svuotaCarrelloParziale(){
-    this.carrelloService.svuotaCarrelloParziale();
+  procediConAcquisto(){
+    if(this.loggedUser){
+      this.carrelloService.procediConAcquisto();
+      this.showSuccessToast();
+    }else{
+      this.router.navigate(["/login"]);
+    }
   }
+
+  showSuccessToast() {
+    console.log('Showing success toast');
+    this.toastr.success('Ordine effettuato con successo!', 'Successo');
+  }
+
+
 
 }
