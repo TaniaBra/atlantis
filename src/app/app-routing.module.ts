@@ -7,6 +7,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegistrazioneComponent } from './components/registrazione/registrazione.component';
 import { ProdottiComponent } from './components/prodotti/prodotti.component';
 import { ProdottoComponent } from './components/prodotto/prodotto.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 const routes: Routes = [
 {
@@ -36,6 +37,10 @@ const routes: Routes = [
 {
   path: 'registrati',
   component: RegistrazioneComponent
+},
+{
+  path: 'profilo',
+  component: ProfileComponent
 },
 {
   path: '',

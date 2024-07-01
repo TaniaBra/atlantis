@@ -16,6 +16,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ProdottiComponent } from './components/prodotti/prodotti.component';
 import { CardProdottoComponent } from './components/card-prodotto/card-prodotto.component';
 import { ToastrModule } from 'ngx-toastr';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ToastrModule } from 'ngx-toastr';
     RegistrazioneComponent,
     ProdottoComponent,
     ProdottiComponent,
-    CardProdottoComponent
+    CardProdottoComponent,
+    ProfileComponent
 
   ],
   imports: [

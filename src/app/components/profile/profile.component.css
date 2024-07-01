@@ -1,0 +1,20 @@
+.profile-info-container {
+    background-color:#9bb1ff;
+    border-radius: 8px;
+    padding: 10px;
+    width: 400px;
+    height: 200px;
+    margin: 0 auto; 
+    margin-top: 50px;
+    font-family: 'Times New Roman', Times, serif;
+    line-height: 2; 
+}
+
+.profile-info-container img {
+    max-width: 100px !important;
+    max-height: 50px !important;
+}
+
+.profile-info-container span {
+    display: block;        /* Ogni informazione su una nuova riga */
+}
