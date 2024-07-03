@@ -1,0 +1,24 @@
+.footer{
+  bottom: 0; /* Posiziona il footer al fondo della pagina */
+  width: 100%; /* Occupa l'intera larghezza della viewport */
+  height: 65px;
+  text-align: center; /* Centra il testo */
+  background-color: #9bb1ff;
+  color: black;
+  padding: 10px 20px 10px 20px;
+}
+
+.riga{
+    width: 100%;
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+}
+
+.testo{
+  width: calc(100% - 100px);
+}
+
+.logo {
+    width: 50px !important;
+}
