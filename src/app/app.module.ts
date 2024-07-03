@@ -17,6 +17,8 @@ import { ProdottiComponent } from './components/prodotti/prodotti.component';
 import { CardProdottoComponent } from './components/card-prodotto/card-prodotto.component';
 import { ToastrModule } from 'ngx-toastr';
 import { ProfileComponent } from './components/profile/profile.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { StoricoOrdiniComponent } from './components/storico-ordini/storico-ordini.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { ProfileComponent } from './components/profile/profile.component';
     ProdottoComponent,
     ProdottiComponent,
     CardProdottoComponent,
-    ProfileComponent
+    ProfileComponent,
+    FooterComponent,
+    StoricoOrdiniComponent
 
   ],
   imports: [
