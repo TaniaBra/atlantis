@@ -37,7 +37,7 @@
 }
 
 .descrizione {
-    font-family: 'Times New Roman';
+    font-family: Georgia, 'Times New Roman', Times, serif;
     color: black;
     overflow: hidden;
     text-overflow: ellipsis;
