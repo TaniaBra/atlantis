@@ -1,5 +1,6 @@
 .layout{
     padding: 24px;
+    padding-top: calc(65px + 24px); /* Altezza header + padding layout */
     min-height: calc(100vh - 65px); /* vh = viewport height, altezza dello schermo */
     background: #fff;
 }
