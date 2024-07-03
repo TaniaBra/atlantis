@@ -1,0 +1,40 @@
+.register-container {
+    display: flex;
+    box-shadow: 0 3px 15px #3333;
+    border: 1px solid #ccc;
+    width: 600px;
+    height: 400px;
+    background-color: #d4dcff;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.register-container .riga {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Centra verticalmente le etichette all'interno dei div */
+    flex-direction: row;
+    width: 100%;
+}
+
+.register-container .riga .colonna {
+    display: flex;
+    align-items: center; /* Centra verticalmente le etichette all'interno dei div */
+    padding: 0px 10px 0px 10px;
+    width: 50%;
+}
+
+.register-button {
+    text-align: center;
+    /* Centra orizzontalmente */
+    position: relative;/* Necessario per l'uso di position assoluta del bottone */
+}
+
+.register-button button {
+    position: absolute; 
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centra esattamente l'elemento */
+    margin-top: 30px;
+}

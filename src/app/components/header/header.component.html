@@ -38,7 +38,7 @@
         </mat-menu>
     </div>
     <div *ngIf="!loggedUser">
-        <button mat-icon-button class="login" matTooltip="Login" routerLink="/login">
+        <button mat-icon-button class="login" matTooltip="Login" (click)="procediConLogin()">
             <mat-icon fontIcon="login"></mat-icon>
         </button>
     </div>

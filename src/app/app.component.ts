@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CarrelloService } from './services/carrello/carrello.service';
 import { Prodotto } from './model/prodotto';
+import { LoginService } from './services/login/login.service';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,7 @@ import { Prodotto } from './model/prodotto';
 export class AppComponent {
   title = 'scaishop';
 
-  constructor(private carrelloService: CarrelloService) {}
+  constructor(private carrelloService: CarrelloService, private loginService: LoginService) {}
 
   ngOnInit() {
     const stringifiedCarrello = localStorage.getItem("carrello");
@@ -18,7 +19,11 @@ export class AppComponent {
       const totaleProdotti: Prodotto[] = JSON.parse(stringifiedCarrello);
       this.carrelloService.aggiornaCarrello(totaleProdotti);
     }
-
+    const stringifiedUtente = localStorage.getItem("utente");
+    if(stringifiedUtente){
+      const utente: any = JSON.parse(stringifiedUtente);
+      this.loginService.aggiornaUtente(utente);
+    }
   }
 
 }

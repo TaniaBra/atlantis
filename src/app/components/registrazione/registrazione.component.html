@@ -1,45 +1,39 @@
-<div class="container">
-<form>
-    <mat-form-field>
-      <mat-label>Inserire nome</mat-label>
-      <input matInput placeholder="Nome" value="">
-    </mat-form-field>
-  </form>  
-    <form>
-      <mat-form-field>
-        <mat-label>Inserire cognome</mat-label>
-        <input matInput placeholder="Cognome" value="">
+<div class="container register-container">
+  <form class="form" [formGroup]="registerForm" (ngSubmit)="register()">
+    <div class="riga">
+      <mat-form-field class="colonna">
+        <mat-label>Nome</mat-label>
+        <input matInput placeholder="Nome" formControlName="nome">
       </mat-form-field>
-</form>
-<form>
-    <mat-form-field>
-      <mat-label>Inserire data di nascita</mat-label>
-      <input matInput placeholder="GG-MM-YYYY" value="">
-    </mat-form-field>
-</form>
-<form>
-    <mat-form-field>
-      <mat-label>Inserire email</mat-label>
-      <input matInput placeholder="email" value="">
-    </mat-form-field>
-</form>
-<form>
-    <mat-form-field>
-      <mat-label>Inserire username</mat-label>
-      <input matInput placeholder="username" value="">
-    </mat-form-field>
-</form>
-<form>
-    <mat-form-field>
-      <mat-label>Inserire password</mat-label>
-      <input matInput placeholder="password" value="">
-    </mat-form-field>
-</form>
-<form>
-    <mat-form-field>
-      <mat-label>Inserire indirizzo</mat-label>
-      <input matInput placeholder="indirizzo" value="">
-    </mat-form-field>
-</form>
-<button mat-raised-button routerLink="/home">Effettua la registrazione</button>
+      <mat-form-field class="colonna">
+        <mat-label>Cognome</mat-label>
+        <input matInput placeholder="Cognome" formControlName="cognome">
+      </mat-form-field>
+    </div>
+    <div class="riga">
+      <mat-form-field class="colonna">
+        <mat-label>Data di nascita</mat-label>
+        <input matInput [matDatepicker]="picker" [min]="minDate" [max]="maxDate" formControlName="dateOfBirth">
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field class="colonna">
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="Email" formControlName="email">
+      </mat-form-field>
+    </div>
+    <div class="riga">
+      <mat-form-field class="colonna">
+        <mat-label>Username</mat-label>
+        <input matInput placeholder="Username" formControlName="username">
+      </mat-form-field>
+      <mat-form-field class="colonna">
+        <mat-label>Password</mat-label>
+        <input matInput placeholder="Password" formControlName="password">
+      </mat-form-field>
+    </div>
+    <div class="register-button">
+      <button type="submit" [disabled]="!registerForm.valid" mat-raised-button>Registrati</button>
+    </div>
+  </form>
 </div>

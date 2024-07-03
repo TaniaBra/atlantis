@@ -5,6 +5,7 @@ import { Prodotto } from 'src/app/model/prodotto';
 import { Utente } from 'src/app/model/utente';
 import { CarrelloService } from 'src/app/services/carrello/carrello.service';
 import { LoginService } from 'src/app/services/login/login.service';
+import { ToastsService } from 'src/app/services/toasts/toasts.service';
 
 
 
@@ -21,7 +22,7 @@ export class CarrelloComponent {
 
 
   constructor(private carrelloService: CarrelloService, private loginService: LoginService, private router: Router,
-     private toastr: ToastrService) { }
+    private toastService: ToastsService) { }
 
   ngOnInit() {
     this.loginService.loggedUser.subscribe((loggedUser) => {
@@ -67,19 +68,17 @@ export class CarrelloComponent {
     this.carrelloService.toggleSelectProdotto(id);
   }
 
-  procediConAcquisto(){
-    if(this.loggedUser){
+  procediConAcquisto() {
       this.carrelloService.procediConAcquisto();
-      this.showSuccessToast();
-    }else{
-      this.router.navigate(["/login"]);
-    }
+      this.toastService.showSuccessMessage('Ordine effettuato con successo!', 'Successo');
   }
 
-  showSuccessToast() {
-    console.log('Showing success toast');
-    this.toastr.success('Ordine effettuato con successo!', 'Successo');
+  procediConLogin() {
+    const path = this.router.url; 
+    this.loginService.redirectLogin.next(path);
+    this.router.navigate(['/login']);
   }
+
 
 
 

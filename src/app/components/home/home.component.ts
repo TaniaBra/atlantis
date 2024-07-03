@@ -24,7 +24,6 @@ export class HomeComponent {
   ngOnInit(){
     this.loginService.loggedUser.subscribe((loggedUser)=>{
       this.loggedUser= loggedUser;
-      console.log(loggedUser);
     });
     this.homeService.getListaProdotti().subscribe(res => {
       this.prodotti = res;
