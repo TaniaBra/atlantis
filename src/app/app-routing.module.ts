@@ -8,6 +8,7 @@ import { RegistrazioneComponent } from './components/registrazione/registrazione
 import { ProdottiComponent } from './components/prodotti/prodotti.component';
 import { ProdottoComponent } from './components/prodotto/prodotto.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { StoricoOrdiniComponent } from './components/storico-ordini/storico-ordini.component';
 
 const routes: Routes = [
 {
@@ -41,6 +42,10 @@ const routes: Routes = [
 {
   path: 'profilo',
   component: ProfileComponent
+},
+{
+  path: 'storico-ordini',
+  component: StoricoOrdiniComponent
 },
 {
   path: '',
