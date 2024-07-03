@@ -1,6 +1,32 @@
-.container{
-    text-align: center;
-    margin-top: 10px;
+.login-container{
+    display: flex;
+    justify-content: center;
+    align-items: center !important;
+    flex-direction: column;
+    box-shadow: 0 3px 15px #3333;
+    border: 1px solid #ccc;
+    background-color: #d4dcff;
+    width: 800px;
+    height: 150px;
+}
+
+.login-container .riga{
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Centra verticalmente le etichette all'interno dei div */
+    flex-direction: row;
+    width: 100%;
+}
+
+.login-container .riga .colonna{
+    display: flex;
+    align-items: center; /* Centra verticalmente le etichette all'interno dei div */
+    padding: 0px 10px 0px 10px;
+    width: 50%;
+}
+
+p{
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 
