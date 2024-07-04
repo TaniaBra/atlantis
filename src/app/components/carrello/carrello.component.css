@@ -20,7 +20,7 @@
     background-color: #d4dcff;
     border-radius: 5px;
     position: sticky;
-    top: 20px;
+    top: calc(20px + 65px);
     width: 50%;
     height: 350px;
     display: flex;

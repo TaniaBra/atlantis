@@ -7,9 +7,10 @@
 
 .cards-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, 300px);
+    justify-content: center;
+    grid-template-columns: repeat(auto-fill, 330px);
     row-gap: 40px !important;
-    gap: 63px;
+    gap: 50px;
     /*  distanza tra le card a livello orizzontale */
 }
 
