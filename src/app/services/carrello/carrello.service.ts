@@ -8,6 +8,7 @@ import { Prodotto } from 'src/app/model/prodotto';
 export class CarrelloService {
 
   prodottiNelCarrello = new BehaviorSubject<Prodotto[]>([]);
+ 
   quantitaProdottoService: number = 0;
 
   constructor() { }

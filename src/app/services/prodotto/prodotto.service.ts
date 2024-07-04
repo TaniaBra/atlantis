@@ -12,12 +12,28 @@ export class ProdottoService {
 
   constructor(private http: HttpClient) { }
 
+  getListaProdotti(){
+    return this.http.get<Prodotto[]>(CONSTANTS.BASE_PATH + "prodotti", { headers: getHeaders() });
+  }
+
   getProdottiByIdCategoria(id: string | null) {
     return this.http.get<Prodotto[]>(CONSTANTS.BASE_PATH + "categoria/" + id +"/prodotti", { headers: getHeaders() });
   }
 
   getProdottoById(id: string | null) {
     return this.http.get<Prodotto>(CONSTANTS.BASE_PATH + "categoria/" + id +"/prodotti/" + id, { headers: getHeaders() });
+  }
+
+  deleteProdottoById(id: string | null){
+    this.http.delete<Prodotto>(CONSTANTS.BASE_PATH + "prodotti/" + "delete", { headers: getHeaders() } );
+  }
+
+  updateProdottoById(prodotto: any){
+    return this.http.put<Prodotto>(CONSTANTS.BASE_PATH + "prodotti/" + "update", prodotto, { headers: getHeaders() });
+  }
+
+  insertProdotto(prodotto: any){
+    return this.http.post<Prodotto>(CONSTANTS.BASE_PATH + "prodotti/" + "insert", prodotto, { headers: getHeaders() });
   }
 }
 
