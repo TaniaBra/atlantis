@@ -10,6 +10,7 @@ import { LoginService } from 'src/app/services/login/login.service';
 export class ProfileComponent {
 
   loggedUser?: Utente;
+  selezionato = "";
 
   constructor(private loginService: LoginService) { }
 
