@@ -1,12 +1,14 @@
+import { Indirizzo } from "./indirizzo"
 export interface Utente {
     id: number
-    nome: String
-    cognome: String
+    nome: string
+    cognome: string
     dateOfBirth: Date
-    email: String
+    email: string
     admin: boolean
-    username: String
-    password: String
+    username: string
+    password: string
     disabilitato: boolean
-    urlAvatar: String
+    urlAvatar: string
+    indirizzi: Indirizzo[]
 }

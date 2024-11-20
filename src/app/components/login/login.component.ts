@@ -2,6 +2,7 @@ import { Location } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Indirizzo } from 'src/app/model/indirizzo';
 import { LoginService } from 'src/app/services/login/login.service';
 import { ToastsService } from 'src/app/services/toasts/toasts.service';
 
@@ -31,19 +32,18 @@ export class LoginComponent {
   }
 
   //nel metodo di login con il .get prendo i parametri in input
-  login() {
+  async login() {
     try {
       const username = this.loginForm.get("username")?.value;
       const password = this.loginForm.get("password")?.value;
-      this.loginService.getUser({ username, password }).subscribe(res => {
-        if (res) {
-          this.loginService.aggiornaUtente(res);
-          this.router.navigate([this.redirectPath]);
-          this.toastService.showSuccessMessage('Hai effettuato correttamente il login!', 'Successo');
-        } else {
-          this.toastService.showErrorMessage('Qualcosa è andato storto!', 'Errore');
-        }
-      });
+      const loggedUser = await this.loginService.getUser(username, password);
+      if (loggedUser) {
+        this.loginService.aggiornaUtente(loggedUser);
+        this.router.navigate([this.redirectPath]);
+        this.toastService.showSuccessMessage('Hai effettuato correttamente il login!', 'Successo');
+      } else {
+        this.toastService.showErrorMessage('Qualcosa è andato storto!', 'Errore');
+      }
     } catch (e: any) {
       this.toastService.showErrorMessage(e.message, 'Errore')
     }
