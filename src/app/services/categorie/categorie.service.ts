@@ -22,15 +22,15 @@ export class CategorieService {
   }
 
   deleteCategoriaById(id: string | null){
-    this.http.delete<Categorie>(CONSTANTS.BASE_PATH + "categoria/" + "delete",  { headers: getHeaders() });
+    return this.http.delete<void>(CONSTANTS.BASE_PATH + "categoria/delete",  { headers: getHeaders() });
   }
 
   updateCategoria(categoria : any){
-    return this.http.put<Categorie>(CONSTANTS.BASE_PATH + "categorie/" + "update", categoria, { headers: getHeaders() });
+    return this.http.put<Categorie>(CONSTANTS.BASE_PATH + "categorie/update", categoria, { headers: getHeaders() });
   }
 
   insertCategoria(categoria: any){
-    return this.http.post<Categorie>(CONSTANTS.BASE_PATH + "categoria/" + "insert", categoria, { headers: getHeaders() });
+    return this.http.post<Categorie>(CONSTANTS.BASE_PATH + "categoria/insert", categoria, { headers: getHeaders() });
   }
   
 }

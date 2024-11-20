@@ -16,23 +16,23 @@ export class OrdineService {
   }
 
   getOrdineById(id: string | null) {
-    return this.http.get<Ordine>(CONSTANTS.BASE_PATH + "ordini/" +"ordine/" + id, { headers: getHeaders() });
+    return this.http.get<Ordine>(CONSTANTS.BASE_PATH + "ordini/ordine/" + id, { headers: getHeaders() });
   }
 
-  getOrdineByIdUtente(id: string | null) {
-    return this.http.get<Ordine>(CONSTANTS.BASE_PATH + "ordini/" +"utente/" + id, { headers: getHeaders() });
+  getOrdiniByIdUtente(id: string | null) {
+    return this.http.get<Ordine[]>(CONSTANTS.BASE_PATH + "ordini/utente/" + id, { headers: getHeaders() });
   }
 
   getOrdineByDataOrdine(dataOrdine: Date | null) {
-    return this.http.get<Ordine>(CONSTANTS.BASE_PATH + "ordini/" +"dataOrdine" + dataOrdine, { headers: getHeaders() });
+    return this.http.get<Ordine>(CONSTANTS.BASE_PATH + "ordini/dataOrdine" + dataOrdine, { headers: getHeaders() });
   }
 
   deleteOrdineById(id: string | null){
-    this.http.delete<Ordine>(CONSTANTS.BASE_PATH + "ordini/" + "delete", { headers: getHeaders() } );
+    return this.http.delete<void>(CONSTANTS.BASE_PATH + "ordini/delete", { headers: getHeaders() } );
   }
 
-  insertOrdine(ordine: any){
-    return this.http.post<Ordine>(CONSTANTS.BASE_PATH + "ordine/" + "insert", ordine, { headers: getHeaders() } );
+  insertOrdine(ordine: Ordine){
+    return this.http.post<Ordine>(CONSTANTS.BASE_PATH + "ordine/insert", ordine, { headers: getHeaders() } );
   }
   
 }
