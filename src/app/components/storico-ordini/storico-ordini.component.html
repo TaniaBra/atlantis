@@ -1,4 +1,4 @@
 <h1 class="title">Benvenuto nel tuo storico ordini</h1>
-<div class="cards-storico-container">
-
+<div class="cards-container">
+    <app-card-prodotto *ngFor="let p of prodottiAcquistati" [prodotto]="p"></app-card-prodotto>
 </div>

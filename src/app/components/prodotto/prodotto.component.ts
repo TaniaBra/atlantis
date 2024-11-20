@@ -1,8 +1,10 @@
 import { Location } from '@angular/common';
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Immagine } from 'src/app/model/immagine';
 import { Prodotto } from 'src/app/model/prodotto';
 import { CarrelloService } from 'src/app/services/carrello/carrello.service';
+import { ImmagineService } from 'src/app/services/immagine/immagine.service';
 import { ProdottoService } from 'src/app/services/prodotto/prodotto.service';
 
 @Component({
@@ -12,11 +14,12 @@ import { ProdottoService } from 'src/app/services/prodotto/prodotto.service';
 })
 export class ProdottoComponent {
 
-  prodotto= new Prodotto(0, "", "", "", 0, 0, 0, "", 0, false);
- 
+  prodotto= new Prodotto(0, "", "", "", 0, 0, 0, 0, false);
+  urlImmagineCliccata = "";
+  immaginiProdotto: Immagine[] = [];
   
   constructor(private prodottoService: ProdottoService, private route: ActivatedRoute, private carrelloService: CarrelloService,
-     private location: Location) { }
+     private location: Location, private immagineService: ImmagineService) { }
 
   ngOnInit() {
     let prodottoId: string | null = "";
@@ -25,6 +28,14 @@ export class ProdottoComponent {
         prodottoId = params.get("idProdotto");
         this.prodottoService.getProdottoById(prodottoId).subscribe(res => {
           this.prodotto = res;
+
+          this.immagineService.getImmaginiByIdProdotto(res.id).subscribe((img : Immagine[]) =>{
+            this.immaginiProdotto = img
+            if(this.immaginiProdotto.length > 0){
+              this.urlImmagineCliccata = this.immaginiProdotto[0].url ;
+
+            }
+          })
           console.log(res);
         });
         

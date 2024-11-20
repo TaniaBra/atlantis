@@ -2,24 +2,30 @@
     <mat-icon>keyboard_double_arrow_left</mat-icon>
     <span>Indietro</span>
 </button>
-<div class="card" *ngIf="prodotto.id > 0">
+<div style="display: flex; justify-content: center; align-items: center;">
     <div class="img-container">
-        <img mat-card-image [src]="prodotto.urlImmagine" />
-    </div>
-    <div class="content">
-        <h2>{{prodotto.nome}}</h2>
-        <p class="descrizione"> {{prodotto.descrizioneLunga}}</p>
+        <div class="carousel" style="display: flex; flex-direction: column; justify-content: start; margin-right: 10px">
+            <img *ngFor="let img of immaginiProdotto; let i = index" mat-card-image [src]="img.url" [alt]="'Immagine ' + (i + 1)" />
+        </div>
+        <img mat-card-image [src]="urlImmagineCliccata" />
     </div>
 
-    <div class="info-container">
-        <div class="disponibilita">
-            Disponibilità: <strong>{{prodotto.disponibilita}} pezzi</strong>
+    <div class="card" *ngIf="prodotto.id > 0">
+        <div class="content">
+            <h2>{{prodotto.nome}}</h2>
+            <p class="descrizione"> {{prodotto.descrizioneLunga}}</p>
+
+            <div class="info-container">
+                <div class="disponibilita">
+                    Disponibilità: <strong>{{prodotto.disponibilita}} pezzi</strong>
+                </div>
+                <div class="prezzo">
+                    Prezzo: <strong>€{{prodotto.prezzo}}</strong>
+                </div>
+            </div>
         </div>
-        <div class="prezzo">
-            Prezzo: <strong>€{{prodotto.prezzo}}</strong>
+        <div class="card-button">
+            <button (click)="aggiungiAlCarrello(prodotto)">Aggiungi al carrello</button>
         </div>
-    </div>
-    <div class="card-button">
-        <button (click)="aggiungiAlCarrello(prodotto)">Aggiungi al carrello</button>
     </div>
 </div>

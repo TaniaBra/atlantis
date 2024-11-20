@@ -4,3 +4,16 @@
     font-family: Georgia, 'Times New Roman', Times, serif;
     margin-bottom: 20px;
 }
+
+.cards-container {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fill, 330px);
+    row-gap: 40px !important;
+    gap: 50px;
+    /*  distanza tra le card a livello orizzontale */
+}
+
+.info{
+    color: black;
+}

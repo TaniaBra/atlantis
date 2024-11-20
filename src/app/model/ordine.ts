@@ -1,5 +1,5 @@
 export class Ordine {
-    id: number
+    id: number | null
     costoTotale: number
     indirizzo: string
     dataOrdine: Date

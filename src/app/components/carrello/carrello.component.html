@@ -2,14 +2,14 @@
 <div class="global-container">
     <div class="cards-container">
         <div *ngFor="let p of prodotti" class="card-prodotto">
-            <img [src]="p.urlImmagine">
+            <img [src]="">
             <div class="info-container">
                 <div class="top-info-container">
                     <div class="selected-checkbox">
                         <mat-checkbox [checked]="p.selezionato" (change)="toggleSelectProdotto(p.id)"></mat-checkbox>
                     </div>
                 </div>
-                <div style="display: flex;">
+                <div>
                     <span><strong>Nome: </strong>{{p.nome}}</span>
                 </div>
                 <div>

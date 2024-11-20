@@ -31,8 +31,12 @@
     padding: 16px;
 }
 
-.info{
+.info-red{
     color: red;
+}
+
+.info-black{
+    color: black;
 }
 
 .descrizione {

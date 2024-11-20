@@ -1,21 +1,27 @@
 <div class="card" *ngIf="prodotto">
     <div class="img-container">
-        <img mat-card-image [src]="prodotto.urlImmagine" [routerLink]="['/categorie', prodotto.idCategoria, 'prodotti', prodotto.id ]"/>
+        <img mat-card-image [src]="" [routerLink]="['/categorie', prodotto.idCategoria, 'prodotti', prodotto.id ]"/>
     </div>
     <div class="content">
         <div class="descrizione">
             <p> {{prodotto.descrizioneBreve}}</p>
         </div>
         <div class="info-container">
-            <div class="disponibilita">
-                Disponibilità: <span class="info">{{prodotto.disponibilita}} pezzi</span>
+            <div  *ngIf="!prodotto.acquistato" class="disponibilita">
+                Disponibilità: <span class="info-red">{{prodotto.disponibilita}} pezzi</span>
             </div>
             <div class="prezzo">
-                Prezzo: <strong class="info">€{{prodotto.prezzo}}</strong>
+                Prezzo: <strong [ngClass]="prodotto.acquistato ? 'info-black' : 'info-red'">€{{prodotto.prezzo}}</strong>
+            </div>
+            <div *ngIf="prodotto.acquistato" class="data-acquisto">
+                Data di acquisto: <strong style="font-style: Georgia;">{{prodotto.dataAcquisto}}</strong>
+            </div>
+            <div  *ngIf="prodotto.acquistato" class="quantità">
+                Quantità: <span style="font-style: Georgia;"><strong>{{prodotto.quantita}}</strong> pezzi acquistati</span>
             </div>
         </div>
     </div>
-    <div class="card-buttons-container row g-0">
+    <div *ngIf="!prodotto.acquistato" class="card-buttons-container row g-0">
         <div class="col card-buttons">
             <button matTooltip="Carrello" mat-flat-button class="card-button-cart" (click)="addProdotto(prodotto)">
                 <mat-icon>add_shopping_cart</mat-icon>

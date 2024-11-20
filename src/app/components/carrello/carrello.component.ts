@@ -1,6 +1,5 @@
 import { Component, } from '@angular/core';
 import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
 import { Prodotto } from 'src/app/model/prodotto';
 import { Utente } from 'src/app/model/utente';
 import { CarrelloService } from 'src/app/services/carrello/carrello.service';
@@ -69,8 +68,8 @@ export class CarrelloComponent {
   }
 
   procediConAcquisto() {
-      this.carrelloService.procediConAcquisto();
-      this.toastService.showSuccessMessage('Ordine effettuato con successo!', 'Successo');
+      const ok = this.carrelloService.procediConAcquisto();
+      if (ok)  this.toastService.showSuccessMessage('Ordine effettuato con successo!', 'Successo');
   }
 
   procediConLogin() {
