@@ -1,0 +1,15 @@
+h1{
+    text-align: center;
+}
+
+mat-form-field{
+    height: 60px;
+}
+
+.cap{
+    margin-left: 10px;
+}
+
+.dialog-buttons{
+    justify-content: right;
+}

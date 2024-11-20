@@ -3,27 +3,24 @@
     <div class="immagine-avatar">
       <img mat-card-image [src]="loggedUser?.urlAvatar" />
     </div>
-    <div class="modifica">
-      <mat-icon fontIcon="edit" matTooltip="Modifica"></mat-icon>
-    </div>
   </div>
-  <span><strong>Nome: </strong>{{loggedUser?.nome}}</span>
-  <span><strong>Cognome: </strong>{{loggedUser?.cognome}}</span>
-  <span><strong>Data di nascita: </strong>{{loggedUser?.dateOfBirth}}</span>
-  <span><strong>Email: </strong>{{loggedUser?.email}}</span>
-  <span><strong>Username: </strong>{{loggedUser?.username}}</span>
-  <div class="indirizzo-container">
-    <span><strong>Indirizzo: </strong></span>
+  <div class="modifica">
+    <mat-icon fontIcon="edit" matTooltip="Modifica i dati"></mat-icon>
+  </div>
+  <span class="profile-info"><strong>Nome: </strong> {{loggedUser?.nome}}</span>
+  <span class="profile-info"><strong>Cognome: </strong> {{loggedUser?.cognome}}</span>
+  <span class="profile-info"><strong>Data di nascita: </strong>{{loggedUser?.dateOfBirth}}</span>
+  <span class="profile-info"><strong>Email: </strong>{{loggedUser?.email}}</span>
+  <span class="profile-info"><strong>Username: </strong>{{loggedUser?.username}}</span>
+  <span class="profile-info indirizzo">
+    <strong>Indirizzo:</strong>
     <mat-form-field>
       <mat-select [(value)]="selezionato" placeholder="Selezionare indirizzo">
-        <mat-option value="opzione1">Indirizzo 1 </mat-option>
-        <mat-option value="opzione1">Indirizzo 2 </mat-option>
-        <mat-option value="opzione1">Indirizzo 3 </mat-option>
+        <mat-option *ngFor="let i of loggedUser?.indirizzi" [value]="i">{{i.via}} - {{i.cap}}</mat-option>
       </mat-select>
     </mat-form-field>
-    <div class="icons">
-      <mat-icon fontIcon="delete" matTooltip="Elimina indirizzo" class="azioni">
-      </mat-icon><mat-icon fontIcon="add" matTooltip="Aggiungi indirizzo" class="azioni"></mat-icon>
-    </div>
-  </div>
+    <mat-icon fontIcon="delete" matTooltip="Elimina indirizzo" class="action action-icon" (click)="deleteAddress()"></mat-icon>
+    <mat-icon fontIcon="add" matTooltip="Aggiungi indirizzo" class="action action-icon"(click)="openAddressDialog()"></mat-icon>
+    <mat-icon fontIcon="edit" matTooltip="Modifica indirizzo" class="action action-icon" (click)="updateSelectedAddress()" ></mat-icon>
+  </span>
 </div>
