@@ -13,7 +13,7 @@ export class AppComponent {
 
   constructor(private carrelloService: CarrelloService, private loginService: LoginService) {}
 
-  ngOnInit() {
+  async ngOnInit() {
     const stringifiedCarrello = localStorage.getItem("carrello");
     if (stringifiedCarrello) {
       const totaleProdotti: Prodotto[] = JSON.parse(stringifiedCarrello);
@@ -22,7 +22,8 @@ export class AppComponent {
     const stringifiedUtente = localStorage.getItem("utente");
     if(stringifiedUtente){
       const utente: any = JSON.parse(stringifiedUtente);
-      this.loginService.aggiornaUtente(utente);
+      const loggedUser = await this.loginService.getUser(utente.username, utente.password);
+      this.loginService.aggiornaUtente(loggedUser);
     }
   }
 

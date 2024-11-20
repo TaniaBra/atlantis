@@ -19,6 +19,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { ProfileComponent } from './components/profile/profile.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { StoricoOrdiniComponent } from './components/storico-ordini/storico-ordini.component';
+import { AddressDialogComponent } from './components/profile/address-dialog/address-dialog.component';
 
 @NgModule({
   declarations: [
@@ -34,8 +35,8 @@ import { StoricoOrdiniComponent } from './components/storico-ordini/storico-ordi
     CardProdottoComponent,
     ProfileComponent,
     FooterComponent,
-    StoricoOrdiniComponent
-
+    StoricoOrdiniComponent,
+    AddressDialogComponent
   ],
   imports: [
     BrowserModule,
