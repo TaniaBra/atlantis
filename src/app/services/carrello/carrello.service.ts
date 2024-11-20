@@ -70,7 +70,7 @@ export class CarrelloService {
     this.ordineService.insertOrdine(ordine).subscribe(ordineResponse => {
       if (ordineResponse) {
         const acquisti: Acquisto[] = prodottiAcquistati.map(el => {
-          return { id: null, idProdotto: el.id, quantita: el.quantita ? el.quantita : 0, idOrdine: ordineResponse.id }
+          return { id: null, idProdotto: el.id, quantita: el.quantita ? el.quantita : 0, idOrdine: ordineResponse.id, prezzoUnitario: el.prezzo}
         })
         this.acquistiService.insertAcquisti(acquisti).subscribe(acquisti => {
           if (acquisti) {

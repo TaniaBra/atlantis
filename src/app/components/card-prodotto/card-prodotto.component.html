@@ -1,6 +1,6 @@
 <div class="card" *ngIf="prodotto">
     <div class="img-container">
-        <img mat-card-image [src]="" [routerLink]="['/categorie', prodotto.idCategoria, 'prodotti', prodotto.id ]"/>
+        <img mat-card-image [src]="urlImmagine" [routerLink]="['/categorie', prodotto.idCategoria, 'prodotti', prodotto.id ]"/>
     </div>
     <div class="content">
         <div class="descrizione">
@@ -11,7 +11,8 @@
                 Disponibilità: <span class="info-red">{{prodotto.disponibilita}} pezzi</span>
             </div>
             <div class="prezzo">
-                Prezzo: <strong [ngClass]="prodotto.acquistato ? 'info-black' : 'info-red'">€{{prodotto.prezzo}}</strong>
+                Prezzo del prodotto: <strong [ngClass]="prodotto.acquistato ? 'info-black' : 'info-red'">{{prodotto.prezzo |
+            currency:'EUR':'symbol'}}</strong>
             </div>
             <div *ngIf="prodotto.acquistato" class="data-acquisto">
                 Data di acquisto: <strong style="font-style: Georgia;">{{prodotto.dataAcquisto}}</strong>

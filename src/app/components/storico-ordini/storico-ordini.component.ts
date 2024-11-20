@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { Prodotto } from 'src/app/model/prodotto';
 import { Utente } from 'src/app/model/utente';
 import { AcquistiService } from 'src/app/services/acquisti/acquisti.service';
-import { CarrelloService } from 'src/app/services/carrello/carrello.service';
 import { LoginService } from 'src/app/services/login/login.service';
 import { OrdineService } from 'src/app/services/ordine/ordine.service';
 import { ProdottoService } from 'src/app/services/prodotto/prodotto.service';
@@ -30,6 +29,7 @@ export class StoricoOrdiniComponent {
               this.prodottiService.getProdottoById(acquisto.idProdotto + "").subscribe((prodotto) => {
                 prodotto.quantita = acquisto.quantita;
                 prodotto.dataAcquisto = ordine.dataOrdine;
+                prodotto.prezzo = acquisto.prezzoUnitario;
                 prodotto.acquistato = true;
                 this.prodottiAcquistati.push(prodotto);
               })
