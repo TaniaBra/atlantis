@@ -2,13 +2,16 @@
     <mat-icon>keyboard_double_arrow_left</mat-icon>
     <span>Indietro</span>
 </button>
-<div style="display: flex; justify-content: center; align-items: center;">
+<div style="display: flex; justify-content: center;">
     <div class="img-container">
-        <div class="carousel" style="display: flex; flex-direction: column; justify-content: start; margin-right: 10px">
-            <img *ngFor="let img of immaginiProdotto; let i = index" mat-card-image [src]="img.url" [alt]="'Immagine ' + (i + 1)" />
+        <div class="carousel"
+            style="display: flex; flex-direction: column; justify-content: start; margin-right: 10px;">
+            <img *ngFor="let img of getImmaginiCarosello(); let i = index" mat-card-image [src]="img.url"
+                [alt]="'Immagine ' + (i + 2)" (click)="onImgClick(img)"/>
         </div>
-        <img mat-card-image [src]="urlImmagineCliccata" />
+        <img mat-card-image [src]="immagineCliccata.url" style="height: 100%; width: 100%; object-fit: contain;" />
     </div>
+
 
     <div class="card" *ngIf="prodotto.id > 0">
         <div class="content">

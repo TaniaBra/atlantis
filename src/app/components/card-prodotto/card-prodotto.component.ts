@@ -13,7 +13,7 @@ export class CardProdottoComponent {
 
   @Input()
   prodotto?: Prodotto;
-  urlImmagine = "https://media.istockphoto.com/id/1147544807/it/vettoriale/la-commissione-per-la-immagine-di-anteprima-grafica-vettoriale.jpg?s=612x612&w=0&k=20&c=gsxHNYV71DzPuhyg-btvo-QhhTwWY0z4SGCSe44rvg4=";
+  immagine: Immagine = new Immagine();
 
   constructor(private carrelloService: CarrelloService, private immagineService: ImmagineService) { }
 
@@ -21,7 +21,7 @@ export class CardProdottoComponent {
     if (this.prodotto) {
       this.immagineService.getImmaginiByIdProdotto(this.prodotto.id).subscribe((immagini: Immagine[]) => {
         if (immagini.length > 0) {
-          this.urlImmagine = immagini[0].url;
+          this.immagine = immagini[0];
         }
       })
     }

@@ -14,12 +14,12 @@ import { ProdottoService } from 'src/app/services/prodotto/prodotto.service';
 })
 export class ProdottoComponent {
 
-  prodotto= new Prodotto(0, "", "", "", 0, 0, 0, 0, false);
-  urlImmagineCliccata = "";
+  prodotto = new Prodotto(0, "", "", "", 0, 0, 0, 0, false);
+  immagineCliccata: Immagine = new Immagine();
   immaginiProdotto: Immagine[] = [];
-  
+
   constructor(private prodottoService: ProdottoService, private route: ActivatedRoute, private carrelloService: CarrelloService,
-     private location: Location, private immagineService: ImmagineService) { }
+    private location: Location, private immagineService: ImmagineService) { }
 
   ngOnInit() {
     let prodottoId: string | null = "";
@@ -29,28 +29,36 @@ export class ProdottoComponent {
         this.prodottoService.getProdottoById(prodottoId).subscribe(res => {
           this.prodotto = res;
 
-          this.immagineService.getImmaginiByIdProdotto(res.id).subscribe((img : Immagine[]) =>{
+          this.immagineService.getImmaginiByIdProdotto(res.id).subscribe((img: Immagine[]) => {
             this.immaginiProdotto = img
-            if(this.immaginiProdotto.length > 0){
-              this.urlImmagineCliccata = this.immaginiProdotto[0].url ;
+            if (this.immaginiProdotto.length > 0) {
+              this.immagineCliccata = this.immaginiProdotto[0];
 
             }
           })
           console.log(res);
         });
-        
+
       }
     });
-    
+
   }
 
-  aggiungiAlCarrello(prodotto: Prodotto){
+  aggiungiAlCarrello(prodotto: Prodotto) {
     this.carrelloService.aggiungiAlCarrello(prodotto)
   }
 
-  goBack(){
+  goBack() {
     this.location.back();
   }
 
-  
+  getImmaginiCarosello() {
+    return this.immaginiProdotto.filter(el => el.id !== this.immagineCliccata.id);
+  }
+
+  onImgClick(immagine: Immagine){
+    this.immagineCliccata = immagine;
+
+  }
+
 }

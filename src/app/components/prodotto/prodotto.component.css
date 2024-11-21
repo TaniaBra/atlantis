@@ -14,13 +14,13 @@
 
 .card {
     width: 500px;
-    height: 500px;
+    max-height: 500px;
     background-color: #d4dcff;
 }
 
 .img-container {
     width: 500px;
-    height: 500px;
+    max-height: 500px;
     display: flex;
     justify-content: center;
 }
@@ -33,9 +33,15 @@
 }
 
 .carousel img {
-    width: 50px;
-    height: 50px;
+    width: 70px;
+    height: 70px;
     margin-bottom: 10px;
+    transition: 0.3s;
+}
+
+.carousel img:hover {
+    transform: scale(1.10);
+    cursor: pointer;
 }
 
 h2 {

@@ -1,6 +1,6 @@
 <div class="card" *ngIf="prodotto">
     <div class="img-container">
-        <img mat-card-image [src]="urlImmagine" [routerLink]="['/categorie', prodotto.idCategoria, 'prodotti', prodotto.id ]"/>
+        <img mat-card-image [src]="immagine.url" [routerLink]="['/categorie', prodotto.idCategoria, 'prodotti', prodotto.id ]"/>
     </div>
     <div class="content">
         <div class="descrizione">
